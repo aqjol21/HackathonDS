@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Starter Template · Bootstrap</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <main role="main" class="container">
+        <br>
+        <h1>Fantastic Four</h1>
+
+        <form method="GET" action=".">
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <div class="input-group">
+                        <input class="form-control py-2 border-right-0 border" type="search" name="source"
+                            placeholder="Астана" />
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-transparent">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-3">
+                    <div class="input-group">
+                        <input class="form-control py-2 border-right-0 border" type="search" name="destination"
+                            placeholder="Алматы" />
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-transparent">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 col-lg-2">
+                    <label for="publishDateMin">From</label>
+                    <input type="date" class="form-control" id="startDate" name="startDate">
+                </div>
+                <div class="form-group col-md-2 col-lg-2">
+                    <label for="publishDateMax">To</label>
+                    <input type="date" class="form-control" id="finalDate" name="finalDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check" col-md-4>
+                    <input class="form-check-input" type="checkbox" id="isPlane" name="isPlane">
+                    <label class="form-check-label" for="isPlane">
+                        Plane
+                    </label>
+                </div>
+                <div class="form-check" col-md-4>
+                    <input class="form-check-input" type="checkbox" id="isTrain" name="isTrain">
+                    <label class="form-check-label" for="isTrain">
+                        Train
+                    </label>
+                </div>
+                <div class="form-check" col-md-4>
+                    <input class="form-check-input" type="checkbox" id="isBus" name="isBus">
+                    <label class="form-check-label" for="isBus">
+                        Bus
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <hr />
+
+        <div class="row">
+            <ul>
+                <span> Plane Average price:
+                    <h3 style="color:blue"> <b> {{ averagePrice }}
+                        </b></h3></span>
+                <span> Plane Minimum price:
+                    <h3 style="color:rgb(54, 255, 47)"> <b>{{ minPrice }}
+                        </b></h3>
+                    Ticket for {{ minPriceDeparture}}
+                    of {{ minPriceCompany}}</span><br>
+                <span> Plane Maximum price:
+                    <h3 style="color:red"> <b>{{ maxPrice }}
+                        </b></h3></span>
+                Ticket for {{ maxPriceDeparture}}
+                of {{ maxPriceCompany}}</span><br>
+                <br>
+                <span> Train Average price: <b>{{ taveragePrice }}</b></span><br>
+                <span> Train Minimum price: <b>{{ tminPrice }}</b></span><br>
+                <span> Train Maximum price: <b>{{ tmaxPrice }}</b></span><br>
+
+                {% for route in queryset %}
+                <li>
+                    {{  route.source }}
+                    {{ route.destination }}
+                    <br>
+                    <span>Departure Time: {{ route.departure }}</span>
+                    <br>
+                    <span>Arrival Time: {{ route.arrival }}</span>
+                    <br>
+                    <span>Company: {{ route.company }}</span>
+                    <span>Price: {{ route.price }} тг</span>
+                </li>
+                <hr />
+                {% endfor %}
+            </ul>
+        </div>
+    </main><!-- /.container -->
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
